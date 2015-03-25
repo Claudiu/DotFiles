@@ -14,6 +14,12 @@ antigen bundle sublime
 alias go='export GOPATH=`pwd`; go'
 alias myip="curl 'http://api.ipify.org?format=txt'"
 
+alias ainstall='sudo apt-get install --yes'
+alias aupdate='sudo apt-get update'
+alias aupgrade='sudo apt-get upgrade --yes'
+alias aup='sudo apt-get update; sudo apt-get upgrade --yes'
+alias ping='ping -c 5'
+
 # Setup suggestions
 zle-line-init() {
     zle autosuggest-start
