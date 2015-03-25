@@ -33,15 +33,25 @@ def grabFile(fileName):
 	shutil.copyfile(HOME + "/" + fileName, HERE + "/" + fileName)
 	print "Copying " + fileName + " from your home directory."
 
-parser = argparse.ArgumentParser(description='Installation utility for https://github.com/Claudiu/DotFiles')
-parser.add_argument('-i','--install', help='Install DotFiles to current user.',action='store_true', required=False)
-parser.add_argument('-g','--grab', help='Grab DotFiles from current user.',action='store_true', required=False)
-args = parser.parse_args()
 
-if args.install and not args.grab:
-	install()
-	pass
+def defineArguments():
+	parser = argparse.ArgumentParser(description='Installation utility for https://github.com/Claudiu/DotFiles')
+	parser.add_argument('-i','--install', help='Install DotFiles to current user.',action='store_true', required=False)
+	parser.add_argument('-g','--grab', help='Grab DotFiles from current user.',action='store_true', required=False)
+	args = parser.parse_args()
 
-if args.grab and not args.install:
-	grab()
-	pass
+	return args
+
+def main():
+	args = defineArguments()
+
+	if args.install and not args.grab:
+		install()
+		pass
+
+	if args.grab and not args.install:
+		grab()
+		pass
+
+if __name__ == "__main__":
+	main()
