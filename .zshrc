@@ -1,5 +1,9 @@
 source ~/.antigen.zsh
 
+# Add term colors
+TERM=xterm-256color
+sh ~/.scripts/base16-tomorrow.dark.sh
+
 antigen bundle robbyrussell/oh-my-zsh lib/
 antigen theme evan
 
@@ -17,6 +21,7 @@ alias myip="curl 'http://api.ipify.org?format=txt'"
 alias ainstall='sudo apt-get install --yes'
 alias aupdate='sudo apt-get update'
 alias aupgrade='sudo apt-get upgrade --yes'
+alias asearch="sudo apt-cache search"
 alias aup='sudo apt-get update; sudo apt-get upgrade --yes'
 alias ping='ping -c 5'
 

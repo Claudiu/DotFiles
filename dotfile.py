@@ -5,7 +5,7 @@ import argparse
 HERE = os.path.dirname(os.path.abspath(__file__));
 HOME = os.path.expanduser("~") 
 
-files = [".zshrc"]
+files = [".zshrc", ".vimrc"]
 
 def installFile(fileName):
 	shutil.copyfile(HERE + "/" + fileName, HOME + "/" + fileName)
