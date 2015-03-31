@@ -1,7 +1,7 @@
 source ~/.antigen.zsh
 
 # Add term colors
-TERM=xterm-256color
+TERM=screen-256color
 sh ~/.scripts/base16-tomorrow.dark.sh
 
 antigen bundle robbyrussell/oh-my-zsh lib/
@@ -17,7 +17,7 @@ antigen bundle sublime
 
 alias go='export GOPATH=`pwd`; go'
 alias myip="curl 'http://api.ipify.org?format=txt'"
-
+alias tmux='tmux -2'
 alias ainstall='sudo apt-get install --yes'
 alias aupdate='sudo apt-get update'
 alias aupgrade='sudo apt-get upgrade --yes'
