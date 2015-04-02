@@ -1,3 +1,5 @@
+set nocompatible
+
 filetype on
 filetype plugin indent on
 
@@ -11,13 +13,14 @@ Plugin 'fatih/vim-go'
 Plugin 'bling/vim-airline'
 Plugin 'spolu/dwm.vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'Shougo/neocomplete.vim'
 
 call vundle#end()
 
 syntax on
 
 colorscheme base16-default
-let base16colorspace=256
+"let base16colorspace=256
 set background=dark
 
 set encoding=utf-8
@@ -50,7 +53,7 @@ set nolazyredraw
 set t_vb=
 
 set laststatus=2
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 
 set mouse=a
 set cul
@@ -74,3 +77,16 @@ nmap <leader>w :w!<cr>
 
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
+
+set clipboard=unnamed
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:neocomplete#enable_at_startup = 1
+
+au BufRead,BufNewFile *.go setlocal filetype=go
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
