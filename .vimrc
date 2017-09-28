@@ -5,23 +5,22 @@ filetype plugin indent on
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
-Bundle 'gmarik/vundle' 
-Bundle 'chriskempson/base16-vim'
-Bundle 'Lokaltog/vim-easymotion'
-Plugin 'fatih/vim-go'
-Plugin 'bling/vim-airline'
-Plugin 'spolu/dwm.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'Shougo/neocomplete.vim'
-
+    Plugin 'VundleVim/Vundle.vim'
+    Plugin 'Yggdroot/indentLine'
+    Plugin 'airblade/vim-gitgutter'
+    Plugin 'davidhalter/jedi-vim'    
+    Plugin 'posva/vim-vue'    
+    Plugin 'altercation/vim-colors-solarized.git'
+    Plugin 'othree/html5.vim'
+    Plugin 'pangloss/vim-javascript'
+    Plugin 'w0rp/ale'
 call vundle#end()
 
 syntax on
 
-colorscheme base16-default
-"let base16colorspace=256
+let g:solarized_termcolors=256
 set background=dark
+colorscheme solarized
 
 set encoding=utf-8
 set autoindent
@@ -52,41 +51,20 @@ set novisualbell
 set nolazyredraw
 set t_vb=
 
+set clipboard=unnamed
 set laststatus=2
-"let g:airline_powerline_fonts = 1
 
-set mouse=a
+set mouse=v
 set cul
 
-function JsGrep()
-    let what = input('Search for:')
-    execute "vimgrep " . shellescape(expand(what)) . " **.*"
-endfunction
+let g:ale_sign_column_always = 1
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+let g:ale_fixers = {
+\   'python': ['yapf'],
+\}
 
-function Emmetize()
-    let line = getline('.')
-    execute line(".") . "delete _"
-    execute "Emmet " . shellescape(expand(line))
-endfunction
-
-nnoremap <silent> <leader>] :cnext<CR>  
-nnoremap <silent> <leader>[ :cprevious<CR>
-noremap  <leader>g :call JsGrep()<CR>
-noremap  <leader><leader>e :call Emmetize()<CR>
-nmap <leader>w :w!<cr>
-
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
-
-set clipboard=unnamed
-
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:neocomplete#enable_at_startup = 1
-
-au BufRead,BufNewFile *.go setlocal filetype=go
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
