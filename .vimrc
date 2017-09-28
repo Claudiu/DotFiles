@@ -6,6 +6,7 @@ filetype plugin indent on
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
     Plugin 'VundleVim/Vundle.vim'
+    Plugin 'Valloric/YouCompleteMe'
     Plugin 'Yggdroot/indentLine'
     Plugin 'airblade/vim-gitgutter'
     Plugin 'davidhalter/jedi-vim'
@@ -16,6 +17,7 @@ call vundle#begin()
     Plugin 'pangloss/vim-javascript'
     Plugin 'w0rp/ale'
     Plugin 'ntpeters/vim-better-whitespace'
+    Plugin 'itchyny/lightline.vim'
 call vundle#end()
 
 syntax on
@@ -68,6 +70,9 @@ let g:ale_fixers = {
 \   'python': ['yapf'],
 \   'javascript': ['eslint'],
 \}
+let g:lightline = {
+\ 'colorscheme': 'wombat',
+\ }
 
 let g:ale_sign_error = 'ER'
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
