@@ -1,11 +1,13 @@
 set nocompatible
 
-filetype on
-filetype plugin indent on
+filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
     Plugin 'VundleVim/Vundle.vim'
+    Plugin 'ervandew/supertab'
+    Plugin 'SirVer/ultisnips'
+    Plugin 'honza/vim-snippets'
     Plugin 'Valloric/YouCompleteMe'
     Plugin 'Yggdroot/indentLine'
     Plugin 'airblade/vim-gitgutter'
@@ -18,8 +20,14 @@ call vundle#begin()
     Plugin 'w0rp/ale'
     Plugin 'ntpeters/vim-better-whitespace'
     Plugin 'itchyny/lightline.vim'
+    Plugin 'wavded/vim-stylus'
+    Plugin 'dominikduda/vim_current_word'
+    Plugin 'elzr/vim-json'
+    Plugin 'digitaltoad/vim-pug'
+    Plugin 'hail2u/vim-css3-syntax'
 call vundle#end()
 
+filetype plugin indent on
 syntax on
 
 let g:solarized_termcolors=256
@@ -74,7 +82,18 @@ let g:lightline = {
 \ 'colorscheme': 'wombat',
 \ }
 
+hi CurrentWord ctermbg=237
+let g:vim_current_word#highlight_current_word = 1
 let g:ale_sign_error = 'ER'
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+Nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
